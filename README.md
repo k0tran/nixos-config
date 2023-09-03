@@ -63,6 +63,8 @@ python ss.py path/to/your/keyfile
 ```
 3. Use proxy through `8388` port (can be changed in script)
 
+**NOTE:** `ss.py` keeps generated json config (for ss) in current working directory so it's advised to run it from special dir
+
 ## Cleanup
 
 ```shell
