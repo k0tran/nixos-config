@@ -1,31 +1,70 @@
-# My configuration for NixOS & Hyprland
+# NixOS & Hyprland
 
-- NixOs confing in `configuration.nix`
-- Hyprland config in hypr directory (copy it to ~/.config)
-- Waybar config in waybar directory (copy it to ~/.config)
-- Kitty colorcheme can be configured via pywal:
-  + `wal -i path/to/image`
-  + `cp ~/.cache/wal/kitty-colors.conf ~/.config/kitty/.`
-  + `echo 'include ~/.config/kitty/colors-kitty.conf' > ~/.config/kitty/kitty.conf`
-  + same can be done for waybar (copy `colors-waybar.css`)
-- Helix: `echo "theme = 'dark_plus'" > ~/.config/helix/config.toml`
-- Firefox configure
-- telegram and discrod configure
-- git creds (and ssh key)
-  + `git config --global user.email ""`
-  + `git config --global user.name "Your Name"`
-  + Ssh keygen: `ssh-keygen -t ed25519 -C "your_email@example.com"`
-  + Then add `key123.pub` to your account (github site)
-- Also shadowsocks-rust is included in this build
-  + If you want to use it together with outline then there is `ss.py`:
-  + `python ss.py /path/to/keyfile`
-  + key file is just `ssconf` link
+My configuration of NixOS & Hyprland  
+`hardware-configuration.nix` is ommited
+
+## NixOS
+
+Main configuration is in `configuration.nix`
+
+When installing please review line by line all config entries
+
+Also you might like to configure:
+- Firefox (with a gui)
+- Helix `echo "theme = 'dark_plus'" > ~/.config/helix/config.toml`
+- Telegram
+- Discord
+
+## Git & github
+
+Configure git
+```shell
+git config --global user.email ""
+git config --global user.name "Your Name"
+```
+
+And github:
+```shell
+ssh-keygen -t ed25519 -C "your_email@example.com"
+cat ~/.ssh/your_ssh_key_name.pub # output add to your github account
+```
+
+## Hyprland & themes
+
+Hyprland:
+```shell
+cp hyprland.conf ~/.config/hypr/.
+```
+
+[Pywal](https://github.com/dylanaraps/pywal) is used for generating colors from images (used by waybar and kitty).
+
+To generate color schemes run:
+```shell
+wal -i path/to/image
+
+# Kitty
+cp ~/.cache/wal/kitty-colors.conf ~/.config/kitty
+echo 'include ~/.config/kitty/colors-kitty.conf' > ~/.config/kitty/kitty.conf
+
+# Waybar
+cp -r waybar ~/.config/.
+cp ~/.cache/wal/colors-waybar.css ~/config/waybar/.
+```
+
+## Shadowsocks and outline
+
+[shadowsocks-rust](https://github.com/shadowsocks/shadowsocks-rust) is already included in this build  
+
+To run it with outline `ssconf` links do the following:
+1. Paste `ssconf` link to some file
+2. Run python script:
+```shell
+python ss.py path/to/your/keyfile
+```
+3. Use proxy through `8388` port (can be changed in script)
 
 ## Cleanup
 
-1. Delete everything in home directory (configs, cache and invisible files)
-2. Setup configs using this repo
-3. Run following commands:
 ```shell
 sudo nix-collect-garbage -d
 
