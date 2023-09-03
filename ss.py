@@ -24,7 +24,7 @@ with open(path, 'r') as f:
     key = f.read().replace('ssconf', 'https')
 
 # Generate new config
-os.system(f'ssurl -d `wget {key} -qO -` > sscfg.json')
+os.system(f'ssurl -d `wget {key} --no-hsts -qO -` > sscfg.json')
 
 # Load config
 cfg = None
