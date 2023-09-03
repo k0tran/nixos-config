@@ -243,11 +243,6 @@
     xdg-desktop-portal
     xdg-desktop-portal-gtk
 
-    # Qt stuff
-    # qt5.qtwayland
-    # qt6.qmake
-    # qt6.qtwayland
-
     # Media player
     mpv
 
