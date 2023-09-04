@@ -14,6 +14,7 @@ Also you might like to configure:
 - Helix `echo "theme = 'dark_plus'" > ~/.config/helix/config.toml`
 - Telegram
 - Discord
+- rustup (toolchain) and rust-analyzer (`rustup component add rust-analyzer-x86_64-unknown-linux-gnu`)
 
 ## Git & github
 
