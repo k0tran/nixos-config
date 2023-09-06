@@ -52,6 +52,8 @@ cp -r waybar ~/.config/.
 cp ~/.cache/wal/colors-waybar.css ~/config/waybar/.
 ```
 
+**Note**: right now after Meta+S or Meta+L Hyprland may lag out wallpapers (or waybar). Wallpaper can be set again with `swww -i`. You can also press Meta+M to reload Hyprland or reboot.
+
 ## Shadowsocks and outline
 
 [shadowsocks-rust](https://github.com/shadowsocks/shadowsocks-rust) is already included in this build  
