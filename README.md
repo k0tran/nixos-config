@@ -56,17 +56,25 @@ cp ~/.cache/wal/colors-waybar.css ~/config/waybar/.
 
 ## Shadowsocks and outline
 
-[shadowsocks-rust](https://github.com/shadowsocks/shadowsocks-rust) is already included in this build  
+[shadowsocks-rust](https://github.com/shadowsocks/shadowsocks-rust) is already included in this build
 
-To run it with outline `ssconf` links do the following:
-1. Paste `ssconf` link to some file
-2. Run python script:
-```shell
-python ss.py path/to/your/keyfile
-```
-3. Use proxy through `8388` port (can be changed in script)
+### ss:// links
 
-**NOTE:** `ss.py` keeps generated json config (for ss) in current working directory so it's advised to run it from special dir
+1. Put your key into a file
+2. Generate config: `ssurl -d $(cat keyfile) > config.json`
+3. Use config to start local server: `sslocal -c config.json -b 127.0.0.1:8388` (port can be changed) OR use docker
+
+Then you can use it as proxy:
+- in firefox through extensions (for example foxyproxy)
+- in shell through `proxychains4` (change port in `configuration.nix` if required)
+
+### ssconf:// links
+
+1. Put your `ssconf` link into `outline.sh` (`KEY` variable)
+2. Replace `ssconf` with `https`
+3. run `./outline.sh`
+
+Generated config can be found at `~/.config/shadowsocks-rust/config.json`
 
 ## Cleanup
 

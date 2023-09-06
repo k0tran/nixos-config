@@ -282,6 +282,8 @@
 
     # Shadowsocks
     shadowsocks-rust
+    proxychains
+    # You could also install extensions for firefox like foxyproxy
   ];
 
   virtualisation.docker.enable = true;
